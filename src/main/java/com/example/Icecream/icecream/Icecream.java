@@ -1,10 +1,34 @@
 package com.example.Icecream.icecream;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table
 public class Icecream {
+
+    @Id
+    @SequenceGenerator(
+            name = "icecream_sequence",
+            sequenceName = "icecream_sequence",
+            allocationSize = 1
+    )
+
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "icecream_sequence"
+    )
 
     private int id;
     private String flavour;
     private String place;
+    /*
+    @Transient
+    private int age;
+    "in getAge --> "
+    return Period.between(this.dob, LocalDate.now()).getYears();
+    "dob = date of birth"
+     */
+
 
     public Icecream(){
 
